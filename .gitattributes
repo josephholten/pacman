@@ -1,0 +1,12 @@
+assets/pacman3.png filter=lfs diff=lfs merge=lfs -text
+assets/pacman0.png filter=lfs diff=lfs merge=lfs -text
+assets/pacman1.png filter=lfs diff=lfs merge=lfs -text
+assets/pacman2.png filter=lfs diff=lfs merge=lfs -text
+assets/pacman_open_more.xcf filter=lfs diff=lfs merge=lfs -text
+assets/pacman_open.xcf filter=lfs diff=lfs merge=lfs -text
+assets/pacman.xcf filter=lfs diff=lfs merge=lfs -text
+assets/pacman_closed.xcf filter=lfs diff=lfs merge=lfs -text
+assets/pacman_open2.xcf filter=lfs diff=lfs merge=lfs -text
+assets/pacman_open_less.xcf filter=lfs diff=lfs merge=lfs -text
+*.xcf filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
