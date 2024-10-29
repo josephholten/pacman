@@ -33,9 +33,11 @@ void MoveEntity(Entity* e, float deltaT) {
 }
 
 int main() {
-    static constexpr int screenWidth = 800;
-    static constexpr int screenHeight = 450;
     static constexpr int tileSize = 32;
+    static constexpr int tilesWidth = 25;
+    static constexpr int tilesHeight = 15;
+    static constexpr int screenWidth = tilesWidth*tileSize;
+    static constexpr int screenHeight = tilesHeight*tileSize;
     static constexpr int FPS = 60;
 
     InitWindow(screenWidth, screenHeight, "pacman");
@@ -62,16 +64,8 @@ int main() {
     };
 
     PNM level0 = LoadPNM(ASSETS_PATH "/level0.pgm");
-    for (int r = 0; r < level0.height; r++) {
-        for (int c = 0; c < level0.width; c++) {
-            if (PNMGetGray(&level0, r, c)) {
-                printf("x");
-            } else {
-                printf(" ");
-            }
-        }
-        printf("\n");
-    }
+    Image tileImage = GenImageColor(tileSize, tileSize, WHITE);
+    Texture2D tileTexture = LoadTextureFromImage(tileImage);
 
     int frame = 0;
 
@@ -100,12 +94,20 @@ int main() {
 
         BeginDrawing(); {
             ClearBackground(BLACK); 
+            for (int r = 0; r < tilesHeight; r++) {
+                for (int c = 0; c < tilesWidth; c++) {
+                    if (PNMGetGray(&level0, r, c)) {
+                        DrawTexture(tileTexture, c*tileSize, r*tileSize, WHITE);
+                    }
+                }
+            }
             DrawEntity(&pacman);
         } EndDrawing();
 
         frame++;
     }
 
+    UnloadImage(tileImage);
     UnloadPNM(&level0);
     CloseWindow();
 }
