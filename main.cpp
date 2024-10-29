@@ -25,7 +25,7 @@ void AnimateEntity(Entity* e, int frame) {
 }
 
 void DrawEntity(Entity* e) {
-    DrawTextureRec(e->texture, e->sprites[e->spriteIdx], e->position, BLACK);
+    DrawTextureRec(e->texture, e->sprites[e->spriteIdx], e->position, WHITE);
 }
 
 void MoveEntity(Entity* e, float deltaT) {
